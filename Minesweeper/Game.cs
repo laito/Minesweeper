@@ -17,36 +17,22 @@ namespace Minesweeper
 
         private int highScore;
 
-        private static Grid Grid;
+        private static Grid grid;
         private static GameSettings settings;
         private static DatabaseManager db;
         private static SoundManager soundManager;
 
+        private static Game reference = null;
+
         public Game()
         {
             InitializeComponent();
+            reference = this;
         }
 
-        internal Grid Grid1
+        public static Game getInstance()
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        internal Smiley Smiley
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            return reference;
         }
 
         private void gameLoad(object sender, EventArgs e)
@@ -56,10 +42,16 @@ namespace Minesweeper
 
         private void initializeGame()
         {
-            //loadDatabase();
-            //initializeSound();
+            loadDatabase();
+            initializeSound();
             initializeSettings();
             initializeCounters();
+            initializeGrid();
+        }
+
+        private void initializeGrid()
+        {
+            grid = new Grid(GameSettings.getRows(), GameSettings.getColumns());
         }
 
         private void initializeSettings()
@@ -114,11 +106,40 @@ namespace Minesweeper
         private void setHighScore(int highScore)
         {
             this.highScore = highScore;
+        }        
+
+        /* Click Handlers */
+
+        private void beginnerLevel_Click(object sender, EventArgs e)
+        {
+            GameSettings.setLevel(1);
         }
 
-        private void gameMenu_Click(object sender, EventArgs e)
+        private void intermediateLevel_Click(object sender, EventArgs e)
+        {
+            GameSettings.setLevel(2);
+        }
+
+        private void startGame_Click(object sender, EventArgs e)
+        {
+            initializeGame();
+        }
+
+        private void splitContainer_Panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void Game_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        
+        private void playButton_Click(object sender, EventArgs e)
+        {
+            initializeGame();
+            playButton.Visible = false;
         }
 
     }

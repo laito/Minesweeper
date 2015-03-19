@@ -7,58 +7,20 @@ namespace Minesweeper
 {
     class Level
     {
-        private String name;
-        private int rows;
-        private int columns;
-        private Boolean locked;
-
-        internal GameSettings GameSettings
+        public static int getColumns(int ID)
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            return ID * 5;
         }
 
-        public void setLock() {
-            locked = true;
-        }
-
-        public void unLock()
+        public static int getRows(int ID)
         {
-            locked = false;
+            return ID * 5;
         }
 
-        public void setName(String name)
+        public static int getMines(int ID)
         {
-            this.name = name;
+            return ID * 5;
         }
 
-        public String getName() {
-            return name;
-        }
-
-        public int getColumns()
-        {
-            return columns;
-        }
-
-        public void setColumns(int columns)
-        {
-            this.columns = columns;
-        }
-
-        public int getRows()
-        {
-            return rows;
-        }
-
-        public void setRows(int rows)
-        {
-            this.rows = rows;
-        }
     }
 }

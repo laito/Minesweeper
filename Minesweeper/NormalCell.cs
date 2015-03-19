@@ -7,6 +7,11 @@ namespace Minesweeper
 {
     class NormalCell : Cell
     {
+
+        public NormalCell(int x, int y) : base(x, y)
+        {
+        }
+
         private int neighbouringMines = 0;
 
         public void setNeighbours(int neighbours)
@@ -14,9 +19,11 @@ namespace Minesweeper
             neighbouringMines = neighbours;
         }
 
-        
-        public override void processCell()
+
+        public override void processCell(Object sender, EventArgs e)
         {
+            Console.WriteLine("Cicked on a normal cell");
+            return;
             if (this.neighbouringMines == 0)
             {
                 // Open neighbouring mine cells
@@ -35,15 +42,13 @@ namespace Minesweeper
                         if (neighbourX >= 0 && neighbourX < rows && neighbourY >= 0 && neighbourY < columns)
                         {
                             Cell neighoburingCell = Grid.getCell(neighbourX, neighbourY);
-                            neighoburingCell.processCell();
+                            neighoburingCell.processCell(sender, e);
                         }
                     }
                 }
-                base.turnON();
             }
             else
             {
-                base.turnON();
             }
         }
     }

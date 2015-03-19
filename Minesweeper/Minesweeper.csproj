@@ -52,7 +52,6 @@
     <Compile Include="DatabaseManagerFactory.cs" />
     <Compile Include="GameSettings.cs" />
     <Compile Include="Grid.cs" />
-    <Compile Include="Level2.cs" />
     <Compile Include="Counter.cs" />
     <Compile Include="CounterFactory.cs" />
     <Compile Include="Game.cs">
@@ -62,8 +61,6 @@
       <DependentUpon>Game.cs</DependentUpon>
     </Compile>
     <Compile Include="Level.cs" />
-    <Compile Include="Level1.cs" />
-    <Compile Include="LevelFactory.cs" />
     <Compile Include="LivesCounter.cs" />
     <Compile Include="MineCell.cs" />
     <Compile Include="MySQLManager.cs" />

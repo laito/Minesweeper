@@ -1,4 +1,5 @@
-﻿namespace Minesweeper
+﻿using System.Windows.Forms;
+namespace Minesweeper
 {
     partial class Game
     {
@@ -31,17 +32,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.gameMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.splitContainer = new System.Windows.Forms.SplitContainer();
-            this.smileyBox = new System.Windows.Forms.PictureBox();
-            this.beginnerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.intermediateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.beginnerLevel = new System.Windows.Forms.ToolStripMenuItem();
+            this.intermediateLevel = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.playButton = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
-            this.splitContainer.Panel1.SuspendLayout();
-            this.splitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.smileyBox)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -58,53 +54,26 @@
             // gameMenu
             // 
             this.gameMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.beginnerToolStripMenuItem,
-            this.intermediateToolStripMenuItem,
+            this.beginnerLevel,
+            this.intermediateLevel,
             this.quitToolStripMenuItem});
             this.gameMenu.Name = "gameMenu";
             this.gameMenu.Size = new System.Drawing.Size(60, 24);
             this.gameMenu.Text = "Game";
-            this.gameMenu.Click += new System.EventHandler(this.gameMenu_Click);
             // 
-            // helpMenu
+            // beginnerLevel
             // 
-            this.helpMenu.Name = "helpMenu";
-            this.helpMenu.Size = new System.Drawing.Size(53, 24);
-            this.helpMenu.Text = "Help";
+            this.beginnerLevel.Name = "beginnerLevel";
+            this.beginnerLevel.Size = new System.Drawing.Size(163, 24);
+            this.beginnerLevel.Text = "Beginner";
+            this.beginnerLevel.Click += new System.EventHandler(this.beginnerLevel_Click);
             // 
-            // splitContainer
+            // intermediateLevel
             // 
-            this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer.Location = new System.Drawing.Point(0, 28);
-            this.splitContainer.Name = "splitContainer";
-            this.splitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer.Panel1
-            // 
-            this.splitContainer.Panel1.Controls.Add(this.smileyBox);
-            this.splitContainer.Size = new System.Drawing.Size(406, 343);
-            this.splitContainer.SplitterDistance = 33;
-            this.splitContainer.TabIndex = 1;
-            // 
-            // smileyBox
-            // 
-            this.smileyBox.Location = new System.Drawing.Point(183, 3);
-            this.smileyBox.Name = "smileyBox";
-            this.smileyBox.Size = new System.Drawing.Size(32, 26);
-            this.smileyBox.TabIndex = 0;
-            this.smileyBox.TabStop = false;
-            // 
-            // beginnerToolStripMenuItem
-            // 
-            this.beginnerToolStripMenuItem.Name = "beginnerToolStripMenuItem";
-            this.beginnerToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
-            this.beginnerToolStripMenuItem.Text = "Beginner";
-            // 
-            // intermediateToolStripMenuItem
-            // 
-            this.intermediateToolStripMenuItem.Name = "intermediateToolStripMenuItem";
-            this.intermediateToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
-            this.intermediateToolStripMenuItem.Text = "Intermediate";
+            this.intermediateLevel.Name = "intermediateLevel";
+            this.intermediateLevel.Size = new System.Drawing.Size(163, 24);
+            this.intermediateLevel.Text = "Intermediate";
+            this.intermediateLevel.Click += new System.EventHandler(this.intermediateLevel_Click);
             // 
             // quitToolStripMenuItem
             // 
@@ -112,23 +81,36 @@
             this.quitToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.quitToolStripMenuItem.Text = "Quit";
             // 
+            // helpMenu
+            // 
+            this.helpMenu.Name = "helpMenu";
+            this.helpMenu.Size = new System.Drawing.Size(53, 24);
+            this.helpMenu.Text = "Help";
+            // 
+            // playButton
+            // 
+            this.playButton.Location = new System.Drawing.Point(159, 169);
+            this.playButton.Name = "playButton";
+            this.playButton.Size = new System.Drawing.Size(75, 23);
+            this.playButton.TabIndex = 1;
+            this.playButton.Text = "Play";
+            this.playButton.UseVisualStyleBackColor = true;
+            this.playButton.Click += new System.EventHandler(this.playButton_Click);
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(406, 371);
-            this.Controls.Add(this.splitContainer);
+            this.Controls.Add(this.playButton);
             this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.Name = "Game";
-            this.Text = "7";
+            this.Text = "Minesweeper";
+            this.Load += new System.EventHandler(this.Game_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.splitContainer.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
-            this.splitContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.smileyBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,11 +121,10 @@
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem gameMenu;
         private System.Windows.Forms.ToolStripMenuItem helpMenu;
-        private System.Windows.Forms.SplitContainer splitContainer;
-        private System.Windows.Forms.PictureBox smileyBox;
-        private System.Windows.Forms.ToolStripMenuItem beginnerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem intermediateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem beginnerLevel;
+        private System.Windows.Forms.ToolStripMenuItem intermediateLevel;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
+        private Button playButton;
         
     }
 }

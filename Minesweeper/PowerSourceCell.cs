@@ -7,11 +7,15 @@ namespace Minesweeper
 {
     class PowerSourceCell : NormalCell
     {
-        public override void processCell()
+        public PowerSourceCell(int x, int y): base(x, y)
+        {
+
+        }
+        public override void processCell(Object sender, EventArgs e)
         {
             Counter livesCounter = CounterFactory.getCounter("Lives");
             livesCounter.incrementValue();
-            base.processCell();
+            base.processCell(sender, e);
         }
     }
 }

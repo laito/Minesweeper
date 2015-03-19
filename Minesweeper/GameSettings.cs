@@ -6,39 +6,28 @@ using System.Text;
 namespace Minesweeper
 {
     class GameSettings
-    {
-        private static Level level;
-        private static String levelName = "Beginner"; //Default level
+    {        
+        private static int levelID = 1; // Default level is beginner
         private static int rows;
         private static int columns;
         private static int timeLimit;
+        private static int mines; 
 
         public GameSettings()
         {
             initialize();
         }
 
-        public Game Game
+        public static void initialize()
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            rows = Level.getRows(levelID);
+            columns = Level.getColumns(levelID);
+            mines = Level.getMines(levelID);
         }
 
-        public void initialize()
+        public static void setLevel(int LevelID)
         {
-            
-            rows = level.getRows();
-            columns = level.getColumns();
-        }
-
-        public void setLevel(String LevelName)
-        {
-            levelName = LevelName;
+            levelID = LevelID;
             initialize();
         }
 
@@ -50,6 +39,11 @@ namespace Minesweeper
         public static int getColumns()
         {
             return columns;
+        }
+
+        public static int getMines()
+        {
+            return mines; 
         }
 
         public static int getTimeLimit()
