@@ -1,0 +1,7 @@
+c:\users\root\documents\visual studio 2010\Projects\Minesweeper\Minesweeper\bin\Debug\Minesweeper.exe
+c:\users\root\documents\visual studio 2010\Projects\Minesweeper\Minesweeper\bin\Debug\Minesweeper.pdb
+c:\users\root\documents\visual studio 2010\Projects\Minesweeper\Minesweeper\obj\x86\Debug\Minesweeper.Properties.Resources.resources
+c:\users\root\documents\visual studio 2010\Projects\Minesweeper\Minesweeper\obj\x86\Debug\Minesweeper.csproj.GenerateResource.Cache
+c:\users\root\documents\visual studio 2010\Projects\Minesweeper\Minesweeper\obj\x86\Debug\Minesweeper.exe
+c:\users\root\documents\visual studio 2010\Projects\Minesweeper\Minesweeper\obj\x86\Debug\Minesweeper.pdb
+C:\Users\root\documents\visual studio 2010\Projects\Minesweeper\Minesweeper\obj\x86\Debug\Minesweeper.Game.resources
