@@ -7,16 +7,6 @@ namespace Minesweeper
 {
     abstract class DatabaseManager
     {
-        public Game Game
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
 
         internal DatabaseManagerFactory DatabaseManagerFactory
         {
@@ -31,7 +21,7 @@ namespace Minesweeper
     
         public abstract void initializeDB();
         public abstract void addScore(int Score);
-        public abstract int[] getScores();
+        public abstract List<int> getScores();
         public abstract int getHighscore();
     }
 }

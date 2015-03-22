@@ -19,7 +19,7 @@ namespace Minesweeper
         public override void addScore(int Score) {
         }
 
-        public override int[] getScores()
+        public override List<int> getScores()
         {
             return null;
         }
