@@ -69,22 +69,23 @@ namespace Minesweeper
             // beginnerLevel
             // 
             this.beginnerLevel.Name = "beginnerLevel";
-            this.beginnerLevel.Size = new System.Drawing.Size(163, 24);
+            this.beginnerLevel.Size = new System.Drawing.Size(175, 24);
             this.beginnerLevel.Text = "Beginner";
             this.beginnerLevel.Click += new System.EventHandler(this.beginnerLevel_Click);
             // 
             // intermediateLevel
             // 
             this.intermediateLevel.Name = "intermediateLevel";
-            this.intermediateLevel.Size = new System.Drawing.Size(163, 24);
+            this.intermediateLevel.Size = new System.Drawing.Size(175, 24);
             this.intermediateLevel.Text = "Intermediate";
             this.intermediateLevel.Click += new System.EventHandler(this.intermediateLevel_Click);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.quitToolStripMenuItem.Text = "Quit";
+            this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
             // helpMenu
             // 
@@ -167,7 +168,7 @@ namespace Minesweeper
         private System.Windows.Forms.ToolStripMenuItem gameMenu;
         private System.Windows.Forms.ToolStripMenuItem helpMenu;
         private System.Windows.Forms.ToolStripMenuItem beginnerLevel;
-        private System.Windows.Forms.ToolStripMenuItem intermediateLevel;
+        public System.Windows.Forms.ToolStripMenuItem intermediateLevel;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
         private Button playButton;
         public Label livesLabel;

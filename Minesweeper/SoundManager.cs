@@ -16,20 +16,10 @@ namespace Minesweeper
             playBackgroundMusic();
         }
 
-        public Game Game
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
         public void playBackgroundMusic()
         {
-
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+            
         }
 
         public void playSound(String eventOccurred) 

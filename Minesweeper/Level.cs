@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Minesweeper
 {
@@ -24,7 +25,16 @@ namespace Minesweeper
 
         public static int getTimeLimit(int ID)
         {
-            return 5;
+            return 60;
+        }
+
+        public static void unlockLevels(int highScore)
+        {
+            if (highScore > 1)
+            {
+                ToolStripMenuItem intermediateLevel = (ToolStripMenuItem)Game.getUIElement("intermediateLevel");
+                intermediateLevel.Enabled = true;
+            }
         }
     }
 }

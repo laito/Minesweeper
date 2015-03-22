@@ -11,17 +11,44 @@ namespace Minesweeper
     {
         private String filename = "db.txt";
         private List<int> scores;
-        FileStream fs;
         private int highScore;
 
         public override void initializeDB()
         {
             // Create Text File
-            fs = new FileStream(filename, FileMode.Append, FileAccess.ReadWrite, FileShare.Read);
+            Stream fs = File.Open(filename, FileMode.OpenOrCreate);
             // Load Scores
             BinaryFormatter bFormatter = new BinaryFormatter();
-            scores = (List<int>) bFormatter.Deserialize(fs);
-            highScore = scores.Max();
+            try
+            {
+                scores = (List<int>) bFormatter.Deserialize(fs);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("exception!");
+                scores = new List<int>();
+            }
+            if (scores == null)
+            {
+                Console.WriteLine("list is null");
+                scores = new List<int>();
+            }
+            Console.WriteLine("printing list");
+            foreach (int x in scores)
+            {
+                Console.WriteLine("x:");
+                Console.WriteLine(x);
+            }
+            try
+            {
+                highScore = scores.Max();
+            }
+            catch (Exception ex)
+            {
+                highScore = 0;
+            }
+            Level.unlockLevels(highScore);
+            fs.Close();
         }
 
         public override void addScore(int Score) {
@@ -30,8 +57,16 @@ namespace Minesweeper
             // Update highscore
             if (Score > highScore) { highScore = Score; }
             // Write to file
+            Stream fs = File.Open(filename, FileMode.OpenOrCreate);
+            Console.WriteLine("writing to file");
             BinaryFormatter bFormatter = new BinaryFormatter();
-            bFormatter.Serialize(fs, getScores());
+            foreach (int x in scores)
+            {
+                Console.WriteLine("x:");
+                Console.WriteLine(x);
+            }
+            bFormatter.Serialize(fs, scores);
+            fs.Close();
         }
 
         public override List<int> getScores()
@@ -42,6 +77,11 @@ namespace Minesweeper
         public override int getHighscore()
         {
             return highScore;
+        }
+
+        public override void closeDB()
+        {
+            Console.WriteLine("Closing DB");
         }
     }
 }

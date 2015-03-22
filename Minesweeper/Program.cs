@@ -14,9 +14,16 @@ namespace Minesweeper
         [STAThread]
         static void Main()
         {
+            AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnProcessExit); 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Game());
+        }
+
+        static void OnProcessExit(object sender, EventArgs e)
+        {
+            DatabaseManager db = DatabaseManagerFactory.getDatabaseManager("txt");
+            db.closeDB();
         }
     }
 }

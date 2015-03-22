@@ -22,8 +22,8 @@ namespace Minesweeper
             btn.Location = new System.Drawing.Point(30 + 50*x, 30 + 50*y);
             btn.Size = new System.Drawing.Size(50, 50);
             btn.Click += new System.EventHandler(this.processCell);
+            btn.TabStop = false;
             Game.getInstance().Controls.Add(btn);
-            
         }
 
         public Button getButton()

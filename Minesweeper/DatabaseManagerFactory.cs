@@ -11,6 +11,13 @@ namespace Minesweeper
 
         public static DatabaseManager getDatabaseManager(String dbManager)
         {
+            if (databaseManager == null)
+            {
+                if (dbManager.Equals("txt"))
+                {
+                    databaseManager = new TextFileManager();
+                }
+            }
             return databaseManager;
         }
     }

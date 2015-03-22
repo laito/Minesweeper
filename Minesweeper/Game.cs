@@ -44,7 +44,6 @@ namespace Minesweeper
 
         private void initializeGame()
         {
-            loadDatabase();
             initializeSound();
             initializeSettings();
             initializeCounters();
@@ -64,6 +63,9 @@ namespace Minesweeper
             //Image smileyImage = Image.FromFile("smiley.gif");
             //smileyImg.Image = smileyImage;
             smileyImg.ImageLocation = "smiley.gif";
+
+            //Set Intermediate to locked
+            intermediateLevel.Enabled = false;
         }
         private void initializeGrid()
         {
@@ -105,6 +107,8 @@ namespace Minesweeper
         public static void loseGame()
         {
             soundManager.playSound("lose");
+            db.addScore(scoreCounter.getValue());
+            db.closeDB();
             MessageBox.Show(reference, "Game Over.");
             System.Windows.Forms.Application.Exit();
         }
@@ -152,10 +156,11 @@ namespace Minesweeper
 
         public static Object getUIElement(String UIElement)
         {
-            String[] UIElements = { "livesLabel", "scoreLabel", "timeLabel", "simleyImg", "playButton" };
+            String[] UIElements = { "livesLabel", "scoreLabel", "timeLabel", "simleyImg", "playButton", "intermediateLevel" };
             if (UIElements.Contains(UIElement))
             {
                 Game self = Game.getInstance();
+                Console.WriteLine(UIElement);
                 return self.GetType().GetField(UIElement).GetValue(self);
             }
             return null; // UI element not found
@@ -163,7 +168,12 @@ namespace Minesweeper
 
         private void Game_Load(object sender, EventArgs e)
         {
+            loadDatabase();
+        }
 
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
         }
     }
 }

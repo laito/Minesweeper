@@ -15,6 +15,11 @@ namespace Minesweeper
         public override void initializeDB() {
             // Create a MySQL Connection
         }
+
+        public override void closeDB()
+        {
+            
+        }
         
         public override void addScore(int Score) {
         }

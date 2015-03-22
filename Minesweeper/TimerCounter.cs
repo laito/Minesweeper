@@ -35,6 +35,7 @@ namespace Minesweeper
             if (curTime == GameSettings.getTimeLimit())
             {
                 Game.loseLife();
+                base.resetValue();
             }
         }
     }
