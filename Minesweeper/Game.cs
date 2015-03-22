@@ -125,16 +125,6 @@ namespace Minesweeper
             initializeGame();
         }
 
-        private void splitContainer_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Game_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         
         private void playButton_Click(object sender, EventArgs e)
         {
@@ -142,5 +132,20 @@ namespace Minesweeper
             playButton.Visible = false;
         }
 
+        public static Object getUIElement(String UIElement)
+        {
+            String[] UIElements = { "livesLabel", "scoreLabel", "timeLabel", "simleyImg" };
+            if (UIElements.Contains(UIElement))
+            {
+                Game self = Game.getInstance();
+                return self.GetType().GetField(UIElement).GetValue(self);
+            }
+            return null; // UI element not found
+        }
+
+        private void Game_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

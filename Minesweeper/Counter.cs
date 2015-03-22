@@ -9,20 +9,10 @@ namespace Minesweeper
     {
         private int value = 0;
 
-        public Game Game
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
         public void incrementValue()
         {
             value++;
+            onUpdate();
         }
 
         public int getValue()
@@ -33,11 +23,15 @@ namespace Minesweeper
         public void resetValue()
         {
             value = 0;
+            onUpdate();
         }
 
         public void decrementValue()
         {
             value--;
+            onUpdate();
         }
+
+        public abstract void onUpdate();
     }
 }
