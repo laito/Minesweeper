@@ -34,9 +34,29 @@ namespace Minesweeper
             return me;
         }
 
+        public int countMines(int x, int y)
+        {
+            int count = 0;
+            for (int ix = -1; ix < 2; ix++)
+            {
+                for (int iy = -1; iy < 2; iy++)
+                {
+                    // Calculate neighbour position
+                    int neighbourX = x + ix;
+                    int neighbourY = y + iy;
+                    // If neighbour is within bounds of the grid
+                    if (neighbourX >= 0 && neighbourX < rows && neighbourY >= 0 && neighbourY < cols)
+                    {
+                        if(cells[neighbourX, neighbourY] is MineCell)
+                            count++;
+                    }
+                }
+            }
+            return count; 
+        }
+
         public void initializeCells()
         {
-
             int col = GameSettings.getColumns();
             int rows = GameSettings.getRows();
             int mines = GameSettings.getMines();
@@ -54,6 +74,15 @@ namespace Minesweeper
                 cells[x, y] = CellFactory.getCell("Mine", x, y);
             }
 
+            // Setting the location of the power cell 
+            int powerLocation = mineLocations[GameSettings.getMines() + 1];
+            int px = powerLocation / col;
+            int py = powerLocation % col;
+
+            PowerSourceCell powerCell = (PowerSourceCell)CellFactory.getCell("PowerSource", px, py);
+            powerCell.setNeighbours(countMines(px, py));
+            cells[px, py] = powerCell; 
+
             for (int y = 0; y < rows; y++)
             {
                 for (int x = 0; x < col; x++)
@@ -61,7 +90,9 @@ namespace Minesweeper
                     if (cells[x, y] == null)
                     {
                         // Generate a cell
-                        Cell newCell = CellFactory.getCell("Normal", x, y);
+                        NormalCell newCell = (NormalCell)CellFactory.getCell("Normal", x, y);
+                        int neighbours = countMines(x,y) ;
+                        newCell.setNeighbours(neighbours);
                         cells[x, y] = newCell;
                     }
                 }

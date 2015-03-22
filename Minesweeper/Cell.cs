@@ -9,7 +9,7 @@ namespace Minesweeper
     abstract class Cell
     {
         private Boolean opened;
-        Button btn;
+        private Button btn;
         private int x;
         private int y;
         
@@ -24,6 +24,21 @@ namespace Minesweeper
             btn.Click += new System.EventHandler(this.processCell);
             Game.getInstance().Controls.Add(btn);
             
+        }
+
+        public Button getButton()
+        {
+            return btn; 
+        }
+
+        public Boolean getOpened()
+        {
+            return opened;
+        }
+
+        public void setOpened(Boolean open)
+        {
+            this.opened = open; 
         }
 
         public int getX()
