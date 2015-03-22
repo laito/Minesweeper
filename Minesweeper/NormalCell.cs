@@ -49,7 +49,14 @@ namespace Minesweeper
                         {
                             Cell neighbouringCell = Grid.getCell(neighbourX, neighbourY);
                             Console.WriteLine(neighbourX + "  " + neighbourY);
-                            neighbouringCell.processCell(neighbouringCell.getButton(), e);
+                            if (neighbouringCell is PowerSourceCell)
+                            {
+                                PowerSourceCell powerCell = (PowerSourceCell)neighbouringCell;
+                                Console.WriteLine("Power source.");
+                                powerCell.processPowerCell(neighbouringCell.getButton(), e);
+                            }
+                            else
+                                neighbouringCell.processCell(neighbouringCell.getButton(), e);
                         }
                     }
                 }

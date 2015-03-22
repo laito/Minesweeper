@@ -74,6 +74,15 @@ namespace Minesweeper
                 cells[x, y] = CellFactory.getCell("Mine", x, y);
             }
 
+            // Setting the location of the power cell 
+            int powerLocation = mineLocations[GameSettings.getMines() + 1];
+            int px = powerLocation / col;
+            int py = powerLocation % col;
+
+            PowerSourceCell powerCell = (PowerSourceCell)CellFactory.getCell("PowerSource", px, py);
+            powerCell.setNeighbours(countMines(px, py));
+            cells[px, py] = powerCell; 
+
             for (int y = 0; y < rows; y++)
             {
                 for (int x = 0; x < col; x++)
@@ -85,7 +94,6 @@ namespace Minesweeper
                         int neighbours = countMines(x,y) ;
                         newCell.setNeighbours(neighbours);
                         cells[x, y] = newCell;
-
                     }
                 }
             }

@@ -13,8 +13,15 @@ namespace Minesweeper
         }
         public override void processCell(Object sender, EventArgs e)
         {
+            Console.WriteLine("Clicked the power source cell.");
             Counter livesCounter = CounterFactory.getCounter("Lives");
             livesCounter.incrementValue();
+            base.processCell(sender, e);
+        }
+
+        public void processPowerCell(Object sender, EventArgs e)
+        {
+            Console.WriteLine("Did not increment lives.");
             base.processCell(sender, e);
         }
     }
