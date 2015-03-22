@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -27,6 +28,7 @@ namespace Minesweeper
         public Game()
         {
             InitializeComponent();
+            initializeUI();
             reference = this;
         }
 
@@ -49,6 +51,20 @@ namespace Minesweeper
             initializeGrid();
         }
 
+        private void initializeUI()
+        {
+            // Fonts
+            PrivateFontCollection pfc = new PrivateFontCollection();
+            pfc.AddFontFile("digital.ttf");
+            livesLabel.Font = new Font(pfc.Families[0], 16, FontStyle.Regular);
+            scoreLabel.Font = new Font(pfc.Families[0], 16, FontStyle.Regular);
+            timeLabel.Font = new Font(pfc.Families[0], 16, FontStyle.Regular);
+
+            // Smiley Image
+            //Image smileyImage = Image.FromFile("smiley.gif");
+            //smileyImg.Image = smileyImage;
+            smileyImg.ImageLocation = "smiley.gif";
+        }
         private void initializeGrid()
         {
             grid = new Grid(GameSettings.getRows(), GameSettings.getColumns());
@@ -71,7 +87,7 @@ namespace Minesweeper
 
         private void initializeCounters()
         {
-            timerCounter = CounterFactory.getCounter("Time");
+            timerCounter = CounterFactory.getCounter("Timer");
             scoreCounter = CounterFactory.getCounter("Score");
             livesCounter = CounterFactory.getCounter("Lives");
         }

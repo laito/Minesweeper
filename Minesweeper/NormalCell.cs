@@ -62,7 +62,7 @@ namespace Minesweeper
                 }
             }
             else
-            {  
+            {
                 cell.Text = neighbouringMines.ToString();
             }
         }

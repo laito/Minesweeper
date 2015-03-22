@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -14,7 +16,6 @@ namespace Minesweeper
         public TimerCounter()
         {
             timeLabel = (Label)Game.getUIElement("timeLabel");
-            Console.WriteLine("timeer started");
             base.resetValue();
             myTimer = new Timer();
             myTimer.Tick += new EventHandler(timerTick);
@@ -33,13 +34,7 @@ namespace Minesweeper
             int curTime = base.getValue();
             if (curTime == GameSettings.getTimeLimit())
             {
-                Counter livesCounter = CounterFactory.getCounter("lives");
-                if(livesCounter.getValue() > 1) {
-                    livesCounter.decrementValue();
-                    base.resetValue();
-                } else 
-                {
-                }
+                Game.loseLife();
             }
         }
     }

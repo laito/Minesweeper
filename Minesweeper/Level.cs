@@ -22,5 +22,9 @@ namespace Minesweeper
             return ID * 5;
         }
 
+        public static int getTimeLimit(int ID)
+        {
+            return 5;
+        }
     }
 }

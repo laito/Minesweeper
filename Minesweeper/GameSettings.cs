@@ -23,6 +23,7 @@ namespace Minesweeper
             rows = Level.getRows(levelID);
             columns = Level.getColumns(levelID);
             mines = Level.getMines(levelID);
+            timeLimit = Level.getTimeLimit(levelID);
         }
 
         public static void setLevel(int LevelID)
