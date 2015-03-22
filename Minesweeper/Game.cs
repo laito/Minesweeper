@@ -109,6 +109,8 @@ namespace Minesweeper
             soundManager.playSound("lose");
             db.addScore(scoreCounter.getValue());
             db.closeDB();
+            PictureBox picture = (PictureBox)Game.getUIElement("smileyImg");
+            picture.ImageLocation = "sad.png";
             MessageBox.Show(reference, "Game Over.");
             System.Windows.Forms.Application.Exit();
         }
@@ -117,6 +119,8 @@ namespace Minesweeper
         {
             soundManager.playSound("win");
             db.addScore(scoreCounter.getValue());
+            PictureBox picture = (PictureBox)Game.getUIElement("smileyImg");
+            picture.ImageLocation = "cool.png";
             MessageBox.Show(reference, "Congratulations! You won!");
             System.Windows.Forms.Application.Exit();
         }
@@ -158,7 +162,7 @@ namespace Minesweeper
 
         public static Object getUIElement(String UIElement)
         {
-            String[] UIElements = { "livesLabel", "scoreLabel", "timeLabel", "simleyImg", "playButton", "intermediateLevel" };
+            String[] UIElements = { "livesLabel", "scoreLabel", "timeLabel", "smileyImg", "playButton", "intermediateLevel" };
             if (UIElements.Contains(UIElement))
             {
                 Game self = Game.getInstance();

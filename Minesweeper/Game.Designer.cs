@@ -35,7 +35,6 @@ namespace Minesweeper
             this.beginnerLevel = new System.Windows.Forms.ToolStripMenuItem();
             this.intermediateLevel = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.playButton = new System.Windows.Forms.Button();
             this.livesLabel = new System.Windows.Forms.Label();
             this.scoreLabel = new System.Windows.Forms.Label();
@@ -48,8 +47,7 @@ namespace Minesweeper
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gameMenu,
-            this.helpMenu});
+            this.gameMenu});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -70,34 +68,28 @@ namespace Minesweeper
             // beginnerLevel
             // 
             this.beginnerLevel.Name = "beginnerLevel";
-            this.beginnerLevel.Size = new System.Drawing.Size(141, 22);
+            this.beginnerLevel.Size = new System.Drawing.Size(152, 22);
             this.beginnerLevel.Text = "Beginner";
             this.beginnerLevel.Click += new System.EventHandler(this.beginnerLevel_Click);
             // 
             // intermediateLevel
             // 
             this.intermediateLevel.Name = "intermediateLevel";
-            this.intermediateLevel.Size = new System.Drawing.Size(141, 22);
+            this.intermediateLevel.Size = new System.Drawing.Size(152, 22);
             this.intermediateLevel.Text = "Intermediate";
             this.intermediateLevel.Click += new System.EventHandler(this.intermediateLevel_Click);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
-            // 
-            // helpMenu
-            // 
-            this.helpMenu.Name = "helpMenu";
-            this.helpMenu.Size = new System.Drawing.Size(44, 20);
-            this.helpMenu.Text = "Help";
             // 
             // playButton
             // 
             this.playButton.Location = new System.Drawing.Point(119, 137);
-            this.playButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.playButton.Margin = new System.Windows.Forms.Padding(2);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(56, 19);
             this.playButton.TabIndex = 1;
@@ -141,7 +133,7 @@ namespace Minesweeper
             // 
             this.smileyImg.Image = ((System.Drawing.Image)(resources.GetObject("smileyImg.Image")));
             this.smileyImg.Location = new System.Drawing.Point(132, 26);
-            this.smileyImg.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.smileyImg.Margin = new System.Windows.Forms.Padding(2);
             this.smileyImg.Name = "smileyImg";
             this.smileyImg.Size = new System.Drawing.Size(24, 23);
             this.smileyImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -161,7 +153,7 @@ namespace Minesweeper
             this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Game";
             this.Text = "Minesweeper";
             this.Load += new System.EventHandler(this.Game_Load);
@@ -177,7 +169,6 @@ namespace Minesweeper
 
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem gameMenu;
-        private System.Windows.Forms.ToolStripMenuItem helpMenu;
         private System.Windows.Forms.ToolStripMenuItem beginnerLevel;
         public System.Windows.Forms.ToolStripMenuItem intermediateLevel;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
