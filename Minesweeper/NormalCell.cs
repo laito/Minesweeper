@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Minesweeper
 {
@@ -22,8 +23,13 @@ namespace Minesweeper
 
         public override void processCell(Object sender, EventArgs e)
         {
-            Console.WriteLine("Cicked on a normal cell");
-            return;
+            if (base.getOpened())
+                return;
+            base.setOpened(true); 
+            
+            Button cell = sender as Button; 
+            cell.Enabled = false; 
+            
             if (this.neighbouringMines == 0)
             {
                 // Open neighbouring mine cells
@@ -41,14 +47,16 @@ namespace Minesweeper
                         // If neighbour is within bounds of the grid
                         if (neighbourX >= 0 && neighbourX < rows && neighbourY >= 0 && neighbourY < columns)
                         {
-                            Cell neighoburingCell = Grid.getCell(neighbourX, neighbourY);
-                            neighoburingCell.processCell(sender, e);
+                            Cell neighbouringCell = Grid.getCell(neighbourX, neighbourY);
+                            Console.WriteLine(neighbourX + "  " + neighbourY);
+                            neighbouringCell.processCell(neighbouringCell.getButton(), e);
                         }
                     }
                 }
             }
             else
-            {
+            {  
+                cell.Text = neighbouringMines.ToString();
             }
         }
     }
