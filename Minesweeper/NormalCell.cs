@@ -27,8 +27,10 @@ namespace Minesweeper
                 return;
             base.setOpened(true); 
             
-            Button cell = sender as Button; 
-            cell.Enabled = false; 
+            Button cell = base.getButton(); 
+            cell.Enabled = false;
+            if (sender is Button)
+                CounterFactory.getCounter("Score").incrementValue();
             
             if (this.neighbouringMines == 0)
             {
@@ -49,14 +51,7 @@ namespace Minesweeper
                         {
                             Cell neighbouringCell = Grid.getCell(neighbourX, neighbourY);
                             Console.WriteLine(neighbourX + "  " + neighbourY);
-                            if (neighbouringCell is PowerSourceCell)
-                            {
-                                PowerSourceCell powerCell = (PowerSourceCell)neighbouringCell;
-                                Console.WriteLine("Power source.");
-                                powerCell.processPowerCell(neighbouringCell.getButton(), e);
-                            }
-                            else
-                                neighbouringCell.processCell(neighbouringCell.getButton(), e);
+                            neighbouringCell.processCell(1, e);
                         }
                     }
                 }

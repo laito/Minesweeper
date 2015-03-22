@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Minesweeper
 {
@@ -13,16 +14,15 @@ namespace Minesweeper
         }
         public override void processCell(Object sender, EventArgs e)
         {
+            if (sender is Button)
+            {
+                Counter livesCounter = CounterFactory.getCounter("Lives");
+                livesCounter.incrementValue();
+            }
             Console.WriteLine("Clicked the power source cell.");
-            Counter livesCounter = CounterFactory.getCounter("Lives");
-            livesCounter.incrementValue();
+         
             base.processCell(sender, e);
         }
 
-        public void processPowerCell(Object sender, EventArgs e)
-        {
-            Console.WriteLine("Did not increment lives.");
-            base.processCell(sender, e);
-        }
     }
 }
