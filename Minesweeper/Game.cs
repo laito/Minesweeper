@@ -78,13 +78,19 @@ namespace Minesweeper
 
         public static void loseLife()
         {
+            livesCounter.decrementValue();
+            if (livesCounter.getValue() == 0)
+            {
+                loseGame();
+            }
 
         }
 
         public static void loseGame()
         {
             soundManager.playSound("lose");
-            endGame();
+            MessageBox.Show(reference, "Game Over.");
+            System.Windows.Forms.Application.Exit();
         }
 
         public static void winGame()
@@ -93,10 +99,6 @@ namespace Minesweeper
             db.addScore(scoreCounter.getValue());
         }
 
-        public static void endGame()
-        {
-            // Handle end of a game
-        }
 
         private int getHighScore()
         {
@@ -134,7 +136,7 @@ namespace Minesweeper
 
         public static Object getUIElement(String UIElement)
         {
-            String[] UIElements = { "livesLabel", "scoreLabel", "timeLabel", "simleyImg" };
+            String[] UIElements = { "livesLabel", "scoreLabel", "timeLabel", "simleyImg", "playButton" };
             if (UIElements.Contains(UIElement))
             {
                 Game self = Game.getInstance();
