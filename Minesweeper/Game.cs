@@ -117,6 +117,8 @@ namespace Minesweeper
         {
             soundManager.playSound("win");
             db.addScore(scoreCounter.getValue());
+            MessageBox.Show(reference, "Congratulations! You won!");
+            System.Windows.Forms.Application.Exit();
         }
 
 

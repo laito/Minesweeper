@@ -25,8 +25,13 @@ namespace Minesweeper
         {
             if (base.getOpened())
                 return;
-            base.setOpened(true); 
-            
+            base.setOpened(true);
+            Grid.incrementOpened();
+            if (Grid.getOpened() == GameSettings.getRows() * GameSettings.getColumns() - GameSettings.getMines())
+            {
+                Game.winGame();
+                return;
+            }
             Button cell = base.getButton(); 
             cell.Enabled = false;
             if (sender is Button)

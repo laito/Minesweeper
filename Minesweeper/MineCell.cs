@@ -10,7 +10,8 @@ namespace Minesweeper
     {
         public MineCell(int x, int y): base(x, y)
         {
-
+            //Button b = base.getButton();
+            //b.Text = "M";
         }
 
         public override void processCell(Object sender, EventArgs e)

@@ -11,6 +11,7 @@ namespace Minesweeper
         private static Cell[,] cells;
         private static int rows;
         private static int cols;
+        private static int opened = 0;
 
         public static Cell getCell(int x, int y)
         {
@@ -32,6 +33,16 @@ namespace Minesweeper
                 me = new Grid(rows, cols);
             }
             return me;
+        }
+
+        public static void incrementOpened()
+        {
+            opened += 1;
+        }
+
+        public static int getOpened()
+        {
+            return opened;
         }
 
         public int countMines(int x, int y)
