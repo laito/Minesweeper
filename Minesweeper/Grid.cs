@@ -22,7 +22,7 @@ namespace Minesweeper
             rows = rows_p;
             cols = cols_p;
             initializeCells();
-            Game.getInstance().Height = rows * 50 + 100;
+            Game.getInstance().Height = rows * 50 + 150;
             Game.getInstance().Width = cols * 50 + 80; 
         }
 

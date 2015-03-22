@@ -62,7 +62,7 @@ namespace Minesweeper
             // Smiley Image
             //Image smileyImage = Image.FromFile("smiley.gif");
             //smileyImg.Image = smileyImage;
-            smileyImg.ImageLocation = "smiley.gif";
+            smileyImg.ImageLocation = @"smiley.jpg";
 
             //Set Intermediate to locked
             intermediateLevel.Enabled = false;
